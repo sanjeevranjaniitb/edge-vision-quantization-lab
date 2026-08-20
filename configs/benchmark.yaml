@@ -1,0 +1,5 @@
+model_variant: sam2.1_hiera_small
+input_size: 1024
+warmup: 10
+iterations: 30
+device: mps

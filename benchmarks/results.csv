@@ -1,0 +1,7 @@
+variant,backend,device,input_size,mean_ms,p50_ms,p95_ms,fps,rss_mb,model_size_mb,parameters,warmup,iterations,machine,platform
+small_fp32,pytorch,mps,256,21.907,21.849,23.046,45.648,748.08,,46060354,10,30,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O
+small_fp16,pytorch,mps,256,22.3,22.236,24.123,44.844,748.02,,46060354,10,30,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O
+small_fp16,coreml,ane+gpu,1024,166.476,165.909,171.804,6.007,910.06,125.5,,5,20,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O
+small_int8,coreml,ane+gpu,1024,209.612,208.639,221.237,4.771,1045.23,85.1,,5,20,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O
+large_fp16,coreml,ane+gpu,1024,894.109,893.611,904.7,1.118,1403.8,488.9,,5,20,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O
+large_int8,coreml,ane+gpu,1024,1012.708,1013.663,1024.006,0.987,855.17,267.7,,5,20,arm64,macOS-15.7.7-arm64-arm-64bit-Mach-O

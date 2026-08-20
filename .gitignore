@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+.venv/
+
+# macOS
+.DS_Store
+
+# Model artifacts — large binaries, not tracked in git
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.onnx
+checkpoints/*.mlpackage/
+
+# Outputs
+outputs/
+
+# Benchmark results — tracked intentionally
+!benchmarks/results.csv

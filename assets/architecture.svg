@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340">
+<rect width="1200" height="340" fill="white"/>
+<style>text{font-family:Arial;fill:#111827}.b{font-weight:700}</style>
+<text x="600" y="38" text-anchor="middle" font-size="24" class="b">SAM 2.1 → Apple Silicon Edge Optimization</text>
+<g stroke="#374151" stroke-width="2" fill="#f8fafc">
+<rect x="30" y="120" width="160" height="80" rx="14"/><rect x="230" y="120" width="180" height="80" rx="14"/>
+<rect x="450" y="120" width="160" height="80" rx="14"/><rect x="650" y="70" width="160" height="70" rx="14"/>
+<rect x="650" y="180" width="160" height="70" rx="14"/><rect x="850" y="120" width="160" height="80" rx="14"/>
+</g>
+<g font-size="15" text-anchor="middle"><text x="110" y="150" class="b">Image</text><text x="110" y="175">Camera / Dataset</text>
+<text x="320" y="150" class="b">SAM 2.1</text><text x="320" y="175">Image Encoder</text>
+<text x="530" y="150" class="b">Precision</text><text x="530" y="175">FP32 / FP16 / INT8</text>
+<text x="730" y="110" class="b">FP16</text><text x="730" y="225" class="b">INT8 / Mixed</text>
+<text x="930" y="150" class="b">Edge Benchmark</text><text x="930" y="175">Quality • Latency • RAM</text></g>
+<g stroke="#6b7280" stroke-width="3"><path d="M190 160h40"/><path d="M410 160h40"/><path d="M610 160h40"/><path d="M810 160h40"/></g>
+</svg>
