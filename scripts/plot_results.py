@@ -16,14 +16,14 @@ rows = []
 with open(ROOT / "benchmarks/results.csv", newline="") as f:
     rows = list(csv.DictReader(f))
 
-def get(rows, variant, col):
+def get(rows, variant, col, backend="coreml"):
     for r in rows:
-        if r["variant"] == variant:
+        if r["variant"] == variant and r["backend"] == backend:
             v = r[col]
             return float(v) if v else None
     return None
 
-# Core ML rows only (comparable resolution)
+# Core ML rows only (comparable resolution — all 1024²)
 COREML = ["small_fp16", "small_int8", "large_fp16", "large_int8"]
 labels  = ["Small\nFP16", "Small\nINT8", "Large\nFP16", "Large\nINT8"]
 
@@ -33,8 +33,9 @@ rss      = [get(rows, v, "rss_mb")      for v in COREML]
 size     = [get(rows, v, "model_size_mb") or 0.0 for v in COREML]
 fps_vals = [get(rows, v, "fps")         for v in COREML]
 
-# error bars: p95 - p50
-yerr = [p95[i] - p50[i] for i in range(4)]
+# asymmetric error bars: only upward (p50 → p95), nothing below
+yerr_upper = [p95[i] - p50[i] for i in range(4)]
+yerr = [np.zeros(4), np.array(yerr_upper)]  # [lower, upper]
 
 # ── style ─────────────────────────────────────────────────────────────────────
 FP16_COLOR  = "#4C9BE8"   # blue
@@ -89,6 +90,8 @@ def bar_labels(ax, vals, fmt="{:.0f}"):
 ax = axes[0, 0]
 bars = ax.bar(x, p50, width=BAR_W, color=colors, zorder=3, edgecolor="white", linewidth=0.5)
 ax.errorbar(x, p50, yerr=yerr, fmt="none", color="#555", capsize=4, linewidth=1.2, zorder=4)
+ax.text(0.98, 0.97, "error bar = p95", transform=ax.transAxes,
+        ha="right", va="top", fontsize=7, color="#888888")
 style_ax(ax, "Inference Latency  (p50, Core ML, 1024²)", "milliseconds")
 bar_labels(ax, p50, "{:.0f} ms")
 ax.set_ylim(0, max(p50) * 1.25)
